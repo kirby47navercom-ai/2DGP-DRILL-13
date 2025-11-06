@@ -63,6 +63,6 @@ class Zombie:
     def handle_collision(self, group, other):
         if group == 'zombie:ball':
             self.stack -=1
-            if self.stack <=0:
+            if self.stack <=0 and not other.stopped:
                 game_world.remove_object(self)
         pass
