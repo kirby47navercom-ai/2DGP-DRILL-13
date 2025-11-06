@@ -43,11 +43,13 @@ def init():
 
     #충돌검사가 필요한 페어
     game_world.add_collision_pair('boy:ball', boy, None)
+    game_world.add_collision_pair('boy:zombie', boy, None)
     for ball in balls:
         game_world.add_collision_pair('boy:ball', None, ball)
 
     for zombie in zombies:
         game_world.add_collision_pair('zombie:ball', zombie, None)
+        game_world.add_collision_pair('bboy:zombie', None, zombie)
 
 def update():
     game_world.update()
