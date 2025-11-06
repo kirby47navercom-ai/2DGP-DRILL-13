@@ -33,6 +33,7 @@ class Zombie:
         self.load_images()
         self.frame = random.randint(0, 9)
         self.dir = random.choice([-1,1])
+        self.stack=2
 
 
     def get_bb(self):
@@ -59,4 +60,9 @@ class Zombie:
     def handle_event(self, event):
         pass
 
-    def handle_collision
+    def handle_collision(self, group, other):
+        if group == 'zombie:ball':
+            self.stack -=1
+            if self.stack <=0:
+                game_world.remove_object(self)
+        pass
