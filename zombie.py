@@ -37,7 +37,7 @@ class Zombie:
 
 
     def get_bb(self):
-        return self.x - 100, self.y - 100, self.x + 100, self.y + 100 if self.stack==2 else self.x - 100, self.y - 200, self.x + 100, self.y + 200
+        return (self.x - 100, self.y - 100, self.x + 100, self.y + 100) if self.stack==2 else (self.x - 50, self.y - 100, self.x + 50, self.y)
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
@@ -68,7 +68,8 @@ class Zombie:
 
     def handle_collision(self, group, other):
         if group == 'zombie:ball':
-            self.stack -=1
-            if self.stack <=0 and not other.stopped:
+            if not other.stopped:
+                self.stack -=1
+            if self.stack <=0:
                 game_world.remove_object(self)
         pass
