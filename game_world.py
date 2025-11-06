@@ -57,6 +57,7 @@ def collide(a, b):
 
 def handle_collisions():
     for group, pairs in collision_pairs.items():
+        print(group)
         for a in pairs[0]:
             for b in pairs[1]:
                 if collide(a, b):
